@@ -135,7 +135,7 @@ const handleWeatherInfo = async (msg) => {
 // Schedule daily weather updates
 const forecastWeatherDaily = async (msg) => {
     try {
-        const job = schedule.scheduleJob('15 08 * * *', async () => {
+        const job = schedule.scheduleJob(process.env.CRON_JOB, async () => {     //cron-job "15 8 * * *"
             const chatId = msg.chat.id
             let user = await User.findOne({ chatId });
 

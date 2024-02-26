@@ -1,3 +1,5 @@
+const express = require("express");
+const app = express();
 const TelegramBot = require('node-telegram-bot-api');
 const mongoose = require('mongoose');
 const axios = require('axios');
@@ -167,10 +169,12 @@ async function getWeather(city, country, id) {
     }
 }
 
+app.get("/", (req, res) => res.send("Hello From Telegram Bot Services"));
 
-
-
-
+const port = process.env.PORT || 8080
+app.listen(port,()=>{
+    console.log(`Telegram bot services listening on port ${port}!`)
+})
 
 // bot.on('message', async (msg) => {
 //     const chatId = msg.chat.id
